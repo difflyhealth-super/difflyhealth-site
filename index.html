@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Difly Health — Tackling Healthcare Differently</title>
+  <meta name="description" content="Difly Health is rethinking healthcare from the ground up — making it simpler, smarter, and more human.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --primary: #0a6e5c;
+      --primary-light: #0d8a73;
+      --primary-dark: #064d40;
+      --accent: #10b981;
+      --bg: #ffffff;
+      --bg-alt: #f8fafb;
+      --text: #1a1a2e;
+      --text-light: #5a5a7a;
+      --border: #e5e7eb;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      background: var(--bg);
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      padding: 0 2rem;
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .logo {
+      font-size: 1.35rem; font-weight: 700; color: var(--primary);
+      text-decoration: none; letter-spacing: -0.02em;
+    }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--text-light); font-size: 0.9rem;
+      font-weight: 500; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--primary); }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 6rem 2rem 4rem;
+      background: linear-gradient(170deg, #f0fdf8 0%, #ffffff 50%, #f8fafb 100%);
+    }
+    .hero-content { max-width: 720px; }
+    .hero-badge {
+      display: inline-block; padding: 0.35rem 1rem; border-radius: 50px;
+      background: rgba(10,110,92,0.08); color: var(--primary);
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em;
+      text-transform: uppercase; margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 700;
+      line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 1.25rem;
+    }
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      font-size: 1.15rem; color: var(--text-light); max-width: 540px;
+      margin: 0 auto 2.5rem; line-height: 1.7;
+    }
+    .hero-cta {
+      display: inline-block; padding: 0.85rem 2.2rem; border-radius: 8px;
+      background: var(--primary); color: #fff; text-decoration: none;
+      font-weight: 600; font-size: 0.95rem; transition: background 0.2s, transform 0.15s;
+    }
+    .hero-cta:hover { background: var(--primary-light); transform: translateY(-1px); }
+
+    /* ── Sections shared ── */
+    section { padding: 5rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--primary); margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700;
+      letter-spacing: -0.02em; margin-bottom: 1rem;
+    }
+    .section-subtitle {
+      font-size: 1.05rem; color: var(--text-light); max-width: 560px;
+      line-height: 1.7; margin-bottom: 3rem;
+    }
+
+    /* ── Pillars ── */
+    #pillars { background: var(--bg-alt); }
+    .pillars-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .pillar-card {
+      background: #fff; border: 1px solid var(--border); border-radius: 12px;
+      padding: 2rem; transition: box-shadow 0.25s, transform 0.2s;
+    }
+    .pillar-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.06); transform: translateY(-2px); }
+    .pillar-icon {
+      width: 48px; height: 48px; border-radius: 10px;
+      background: rgba(10,110,92,0.08); display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.25rem; font-size: 1.4rem;
+    }
+    .pillar-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .pillar-card p { font-size: 0.92rem; color: var(--text-light); line-height: 1.65; }
+
+    /* ── About ── */
+    #about .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    }
+    .about-text p { color: var(--text-light); margin-bottom: 1rem; line-height: 1.75; }
+    .about-visual {
+      background: linear-gradient(135deg, #f0fdf8, #e0f7ef);
+      border-radius: 16px; padding: 3rem; text-align: center;
+      border: 1px solid rgba(10,110,92,0.1);
+    }
+    .about-visual .big-stat { font-size: 4rem; font-weight: 700; color: var(--primary); line-height: 1; }
+    .about-visual .stat-label { color: var(--text-light); font-size: 0.95rem; margin-top: 0.5rem; }
+
+    /* ── Contact ── */
+    #contact { background: var(--bg-alt); }
+    .contact-box {
+      background: #fff; border: 1px solid var(--border); border-radius: 16px;
+      padding: 3rem; max-width: 560px;
+    }
+    .contact-box p { color: var(--text-light); margin-bottom: 1.5rem; line-height: 1.7; }
+    .contact-email {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.75rem 1.5rem; border-radius: 8px;
+      background: rgba(10,110,92,0.06); color: var(--primary);
+      font-weight: 600; text-decoration: none; font-size: 0.95rem;
+      transition: background 0.2s;
+    }
+    .contact-email:hover { background: rgba(10,110,92,0.12); }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center; padding: 2.5rem 2rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem; color: var(--text-light);
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      #about .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      section { padding: 3.5rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="logo">difly<span>health</span></a>
+      <ul class="nav-links">
+        <li><a href="#pillars">What We Do</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">Rethinking Healthcare</div>
+      <h1>Tackling healthcare <em>differently</em> and better</h1>
+      <p>We believe the healthcare system can be simpler, smarter, and more human. Difly Health is building the tools and approaches to make that real.</p>
+      <a href="#contact" class="hero-cta">Get in Touch</a>
+    </div>
+  </section>
+
+  <!-- Pillars -->
+  <section id="pillars">
+    <div class="section-inner">
+      <div class="section-label">Our Approach</div>
+      <h2 class="section-title">Healthcare should work for people, not against them</h2>
+      <p class="section-subtitle">We're focused on the areas where small, smart changes create the biggest impact for patients and providers alike.</p>
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <div class="pillar-icon">&#9883;</div>
+          <h3>Simplified Access</h3>
+          <p>Removing unnecessary friction so patients can get the care they need, when they need it, without jumping through hoops.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">&#9879;</div>
+          <h3>Smarter Systems</h3>
+          <p>Using technology thoughtfully to reduce administrative burden and let healthcare professionals focus on what matters most.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">&#10084;</div>
+          <h3>Human-Centered Design</h3>
+          <p>Every decision starts with the patient experience. We design backwards from outcomes, not forwards from technology.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-text">
+          <div class="section-label">About Difly Health</div>
+          <h2 class="section-title">A different lens on an old problem</h2>
+          <p>Healthcare is one of the most important parts of our lives, yet the experience of navigating it often feels broken. Long wait times, confusing paperwork, fragmented information, and systems that seem designed for everyone except the patient.</p>
+          <p>Difly Health was founded on a simple idea: it doesn't have to be this way. We're a team that combines deep healthcare expertise with fresh thinking to build solutions that actually work for the people who use them.</p>
+          <p>We're just getting started, and we'd love to connect with anyone who shares this vision.</p>
+        </div>
+        <div class="about-visual">
+          <div class="big-stat">Diff&middot;ly</div>
+          <div class="stat-label">Doing things differently, by design.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="section-inner">
+      <div class="section-label">Get in Touch</div>
+      <h2 class="section-title">Let's talk</h2>
+      <div class="contact-box">
+        <p>Whether you're a healthcare professional, a potential partner, or just someone who thinks healthcare can be better — we'd love to hear from you.</p>
+        <a href="mailto:hello@difflyhealth.com" class="contact-email">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          hello@difflyhealth.com
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2026 Difly Health. All rights reserved.
+  </footer>
+
+</body>
+</html>
